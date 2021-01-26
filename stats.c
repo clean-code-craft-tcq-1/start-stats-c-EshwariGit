@@ -20,7 +20,7 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     float add = 0.0;
     float usenum[setlength-1];
     /*-------------To calculate Average-------------------*/
-    for(count; count<setlength;count++)
+    for(count=0; count<setlength;count++)
     {
         usenum[count] = numberset[count];  // Inputs from Testcase count.
     }
