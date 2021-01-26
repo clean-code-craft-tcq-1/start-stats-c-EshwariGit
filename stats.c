@@ -1,5 +1,11 @@
 #include "stats.h"
-
+    /* fucntion to swap the contents of a varaible*/
+    void swap(float *xp, float *yp)
+    {
+        float temp = *xp;
+        *xp = *yp;
+        *yp = temp;
+    }
 struct Stats compute_statistics(const float* numberset, int setlength) {
 
     struct Stats s;
@@ -26,13 +32,7 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
 
     s.average = (float) add/ setlength;
 
-    /* fucntion to swap the contents of a varaible*/
-    void swap(float *xp, float *yp)
-    {
-        float temp = *xp;
-        *xp = *yp;
-        *yp = temp;
-    }
+
     /*-------------To calculate Min and Max-------------------*/
 
     for (p=0;p<setlength-1;p++)
