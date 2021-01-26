@@ -14,47 +14,30 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     s.min = 0;
     s.max = 0;
 
-    int stub_Val = 0;
-    int p,q,r;
-    int count = 0;
-    float add = 0.0;
-    float usenum[setlength-1];
-    
-    /*-------------To calculate Average-------------------*/
-    for(count=0; count<setlength;count++)
+//    int stub_Val = 0;
+    int p;
+//    int count = 0;
+    float minimum = numberset[0], maximum[0], add=0;
+    float avg = 0 ;
+
+    for(p=0; p< setlength; p++)
     {
-        usenum[count] = numberset[count];  // Inputs from stats-test.cpp to read the numberset.
-    }
-
-    for(r=0;r<setlength;r++)
-    {
-        add = add + usenum[r];
-    }
-
-    s.average = (float) add/ setlength;   // For, TEST_CASE("reports average, minimum and maximum")
-
-
-    /*-------------To calculate Min and Max-------------------*/
-
-    for (p=0;p<setlength-1;p++)
-    {
-        stub_Val=p;
-        for (q=p+1;q<setlength;q++)
+        if(numberset[p] > maximum)
         {
-            if (usenum[q]<usenum[stub_Val])
-            {
-                stub_Val=q;
-            }
+            maximum = numberset[p];
         }
-
-        swap(&usenum[stub_Val], &usenum[p]);   // Pass by address.
+        if(numberset[p] < minimum)
+        {
+           minimum =  numberset[p];
+        }
+        add = add + numberset[p];
+        avg = add/setlength;
     }
-    s.max = usenum[setlength-1];               //TEST_CASE("reports average, minimum and maximum")
-    s.min = usenum[0];                         //TEST_CASE("reports average, minimum and maximum")
 
-
-    return s;   /* added Missing return Value*/
-}
+    s.average = avg;
+    s.min = minimum;
+    s.max = maximum;
+    return s;
 
 /*For, TEST_CASE("raises alerts when max is greater than threshold")*/
 
