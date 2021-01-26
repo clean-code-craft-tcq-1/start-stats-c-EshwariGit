@@ -1,13 +1,4 @@
 #include "stats.h"
-
-/* fucntion to swap the contents of a varaible*/
-void swap(float *xp, float *yp)
-{
-    float temp = *xp;
-    *xp = *yp;
-    *yp = temp;
-}
-
 struct Stats compute_statistics(const float* numberset, int setlength) {
     struct Stats s;
     s.average = 0;
