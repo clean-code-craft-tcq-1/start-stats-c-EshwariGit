@@ -1,5 +1,5 @@
 #ifndef STATS_H_
-#define STATS_H_    /*code added by EshwariGit*/
+#define STATS_H_    /*Header Protection : code added by EshwariGit*/
 
 struct Stats compute_statistics(const float* numberset, int setlength);
 
