@@ -73,8 +73,8 @@ void check_and_alert(const float maxThreshold, alerter_funcptr alerters[], struc
 {
     if(computedStats.max>maxThreshold)
     {
-        alerters[emailAlertCallCount]();
-        alerters[ledAlertCallCount]();
+        alerters[0]();
+        alerters[1]();
 
     }
 }
