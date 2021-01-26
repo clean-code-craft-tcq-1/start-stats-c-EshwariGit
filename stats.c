@@ -8,12 +8,12 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     s.max = 0;
 
     int stub_Val = 0;
-    int p,q,r,t;
+    int p,q,r;
     int count = 0;
 
     float add = 0.0;
     float usenum[setlength-1];
-/*-------------To calculate Average-------------------*/
+    /*-------------To calculate Average-------------------*/
     for(count; count<setlength;count++)
     {
         usenum[count] = numberset[count];  // Inputs from Testcase count.
@@ -25,30 +25,32 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     }
 
     s.average = (float) add/ setlength;
-/* fucntion to swap the contents of a varaible*/
+
+    /* fucntion to swap the contents of a varaible*/
     void swap(float *xp, float *yp)
     {
         float temp = *xp;
         *xp = *yp;
         *yp = temp;
     }
-
-/*-------------To calculate Min and Max-------------------*/
+    /*-------------To calculate Min and Max-------------------*/
 
     for (p=0;p<setlength-1;p++)
-        {
+    {
         stub_Val=p;
-            for (q=p+1;q<setlength;q++)
+        for (q=p+1;q<setlength;q++)
+        {
+            if (usenum[q]<usenum[stub_Val])
             {
-                if (usenum[q]<usenum[stub_Val])
-                {
-                    stub_Val=q;
-                }
+                stub_Val=q;
             }
         }
-    swap(&usenum[stub_Val], &usenum[p]);   // Pass by address.
-s.max = usenum[setlength-1];
-s.min = usenum[0];
+
+        swap(&usenum[stub_Val], &usenum[p]);   // Pass by address.
+    }
+    s.max = usenum[setlength-1];
+    s.min = usenum[0];
+
 
     return s;   /* added Missing return Value*/
 }
@@ -71,11 +73,8 @@ void check_and_alert(const float maxThreshold, alerter_funcptr alerters[], struc
 {
     if(computedStats.max>maxThreshold)
     {
-      alerters[emailAlertCallCount]();
-      alerters[ledAlertCallCount]();
-        
+        alerters[emailAlertCallCount]();
+        alerters[ledAlertCallCount]();
+
     }
 }
-
-
-
