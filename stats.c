@@ -1,13 +1,14 @@
 #include "stats.h"
-    /* fucntion to swap the contents of a varaible*/
-    void swap(float *xp, float *yp)
-    {
-        float temp = *xp;
-        *xp = *yp;
-        *yp = temp;
-    }
-struct Stats compute_statistics(const float* numberset, int setlength) {
 
+/* fucntion to swap the contents of a varaible*/
+void swap(float *xp, float *yp)
+{
+    float temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+
+struct Stats compute_statistics(const float* numberset, int setlength) {
     struct Stats s;
     s.average = 0;
     s.min = 0;
@@ -16,21 +17,21 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     int stub_Val = 0;
     int p,q,r;
     int count = 0;
-
     float add = 0.0;
     float usenum[setlength-1];
+    
     /*-------------To calculate Average-------------------*/
     for(count=0; count<setlength;count++)
     {
-        usenum[count] = numberset[count];  // Inputs from Testcase count.
+        usenum[count] = numberset[count];  // Inputs from stats-test.cpp to read the numberset.
     }
 
     for(r=0;r<setlength;r++)
     {
-        add = add + usenum[r]; // TC: 01 : Value calculation for average
+        add = add + usenum[r];
     }
 
-    s.average = (float) add/ setlength;
+    s.average = (float) add/ setlength;   // For, TEST_CASE("reports average, minimum and maximum")
 
 
     /*-------------To calculate Min and Max-------------------*/
@@ -48,13 +49,14 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
 
         swap(&usenum[stub_Val], &usenum[p]);   // Pass by address.
     }
-    s.max = usenum[setlength-1];
-    s.min = usenum[0];
+    s.max = usenum[setlength-1];               //TEST_CASE("reports average, minimum and maximum")
+    s.min = usenum[0];                         //TEST_CASE("reports average, minimum and maximum")
 
 
     return s;   /* added Missing return Value*/
 }
 
+/*For, TEST_CASE("raises alerts when max is greater than threshold")*/
 
 int emailAlertCallCount = 0;
 int ledAlertCallCount = 0;
