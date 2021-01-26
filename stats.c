@@ -8,7 +8,7 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     s.max = 0;
 
     int stub_Val = 0;
-    int p,q,r;
+    int p,q,r,t;
     int count = 0;
 
     float add = 0.0;
@@ -61,7 +61,9 @@ void check_and_alert(const float maxThreshold, alerter_funcptr alerters[], struc
 {
     if(computedStats.max>maxThreshold)
     {
-      alerters();
+      alerters[emailAlertCallCount]();
+      alerters[ledAlertCallCount]();
+        
     }
 }
 
