@@ -1,6 +1,6 @@
 #include "stats.h"
 
-/* fucntion to swap the contents of a varaible*/
+/* fucntion to swap the contents of a variable*/
 void swap(float *xp, float *yp)
 {
     float temp = *xp;
